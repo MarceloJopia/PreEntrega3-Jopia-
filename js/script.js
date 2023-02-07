@@ -46,20 +46,40 @@ checkboxList.forEach((checkbox)=>{
     })
 })
 
-const botonesProductos = document.querySelectorAll('.anadirCarrito')
-botonesProductos.forEach((boton)=>{
-    boton.addEventListener('click',()=>{
-        boton.outerHTML
-        console.log(boton)
+
+function activarEventoBoton(listaProductos){
+    const botonesProductos = document.querySelectorAll('.anadirCarrito')
+    botonesProductos.forEach((boton, index)=>{
+        boton.addEventListener('click',()=>{
+            agregarCarrito(listaProductos[index])
+        })
     })
-})
-console.log(botonesProductos)
+    console.log({botonesProductos})
+}
 // agarrar posicion del array del boton y posicion array producto
 
 
+// que apretar boton agarre el objeto y lo meta a un array
+// JSON.stringify(array de objetoSeleccionado)
+// localStorage.setItem(arrayDeObjetosJSON)
+// localStorage.getItem(arrayDeObjetosJSON)
+// JSON.parse(arrayDeObjetosJSON)
+// agarrar objeto por objeto
+// dibujarlos en una CARD en el Carrito
 
-
-
+function agregarCarrito(item){
+    let carrito = []
+    const carritoCreado = localStorage.getItem('carrito')
+    if(!carritoCreado){
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+    }
+    else{
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+    }
+    carrito.push(item)
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    console.log(carrito)
+}
 
 function filtrarProductos(){
     const productosFiltrados = []
@@ -94,4 +114,5 @@ function dibujarCatalogo(listaProductos){
         card.appendChild(btnAgregarCarrito)
         catalogo.appendChild(card)
     }
+    activarEventoBoton(listaProductos)
 }
