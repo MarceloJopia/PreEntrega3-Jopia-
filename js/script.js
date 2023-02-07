@@ -1,12 +1,3 @@
-// FILTRAR CATEGORIAS (SI)
-// AGREGAR AL CARRITO Y RECORDAR
-// PRODUCTOS DESDE EL JS Y NO DESDE EL HTML (SI)
-// CALCULADORA DE PRECIO TOTAL (EN CARRITO)
-
-// EVENTOS
-// DOM
-// STORAGE - JSON
-
 const productos = [
     {nombre: "Nintendo Switch", valor: 300000, stock: 17, id: "1", categoria:["nintendo","consolas"]},
     {nombre: "Playstation 5", valor: 800000, stock: 15 , id: "2", categoria:["ps","consolas"]},
@@ -22,14 +13,12 @@ const productos = [
     {nombre: "Catan - El Juego", valor: 25000, stock: 15, id: "12", categoria:["mesa"]}
 ]
 
-
 dibujarCatalogo(productos)
 
 const filtros = {pc:false, nintendo:false, ps:false, xbox:false, mesa:false, consolas:false, otros:false}
 const filtrosBase = {pc:false, nintendo:false, ps:false, xbox:false, mesa:false, consolas:false, otros:false}
 
 let checkboxList = document.querySelectorAll(".checkboxFiltros")
-console.log({checkboxList})
 checkboxList.forEach((checkbox)=>{
     checkbox.addEventListener('change', ()=>{
         console.log(checkbox.name)
@@ -46,6 +35,26 @@ checkboxList.forEach((checkbox)=>{
     })
 })
 
+// dibujarCarrito()
+
+// function dibujarCarrito(){
+//     let listaCarrito = document.querySelector(".listaCarrito")
+//     let productosCarrito = JSON.parse(localStorage.getItem('carrito'))
+//     for(producto of productosCarrito){
+//         const nombreProducto = document.createElement("b")
+//         const stockProducto = document.createElement("p")
+//         const precioProducto = document.createElement("p")
+//         const card = document.createElement("div")
+//         card.classList.add("card")
+//         nombreProducto.innerHTML = producto.nombre
+//         stockProducto.innerHTML = "Stock Disponible: "+producto.stock
+//         precioProducto.innerHTML = "Precio: "+producto.valor+" CLP"
+//         card.appendChild(nombreProducto)
+//         card.appendChild(stockProducto)
+//         card.appendChild(precioProducto)
+//         listaCarrito.appendChild(card)
+//     }
+// }
 
 function activarEventoBoton(listaProductos){
     const botonesProductos = document.querySelectorAll('.anadirCarrito')
@@ -56,16 +65,6 @@ function activarEventoBoton(listaProductos){
     })
     console.log({botonesProductos})
 }
-// agarrar posicion del array del boton y posicion array producto
-
-
-// que apretar boton agarre el objeto y lo meta a un array
-// JSON.stringify(array de objetoSeleccionado)
-// localStorage.setItem(arrayDeObjetosJSON)
-// localStorage.getItem(arrayDeObjetosJSON)
-// JSON.parse(arrayDeObjetosJSON)
-// agarrar objeto por objeto
-// dibujarlos en una CARD en el Carrito
 
 function agregarCarrito(item){
     let carrito = []
@@ -97,7 +96,7 @@ function dibujarCatalogo(listaProductos){
     const catalogo = document.querySelector(".catalogo")
     catalogo.innerHTML=''
     for (let cardProducto of listaProductos){
-        const nombreProducto = document.createElement("p")
+        const nombreProducto = document.createElement("b")
         const stockProducto = document.createElement("p")
         const precioProducto = document.createElement("p")
         const btnAgregarCarrito = document.createElement("button")
