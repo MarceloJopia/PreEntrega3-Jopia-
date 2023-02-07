@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
     <title>Tienda de Juegos</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
                     <a href="#">Productos</a>
                 </li>
                 <li>
-                    <a href="./pages/carrito.html">Carro de compras</a>
+                    <a href="#carrito">Carro de compras</a>
                 </li>
             </ul>
         </nav>
@@ -63,8 +64,22 @@
         </div>
         <div class="catalogo">
         </div>
+        <div id="carrito">
+            <h1>Carrito de Compras</h1>
+            <div class="tituloCarrito">
+                <b>Nombre</b>
+                <b>Cantidad</b>
+                <b>Precio</b>
+            </div>
+            <div class="listaCarrito">
+            </div>
+            <div class="calcTotal">
+                <b></b>
+                <b></b>
+                <b class="precioTotal">Precio</b>
+            </div>
+        </div>
     </main>
     <footer></footer>
 </body>
-<script src="js/script.js" defer></script>
 </html>

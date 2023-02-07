@@ -16,7 +16,6 @@ const productos = [
 dibujarCatalogo(productos)
 
 const filtros = {pc:false, nintendo:false, ps:false, xbox:false, mesa:false, consolas:false, otros:false}
-const filtrosBase = {pc:false, nintendo:false, ps:false, xbox:false, mesa:false, consolas:false, otros:false}
 
 let checkboxList = document.querySelectorAll(".checkboxFiltros")
 checkboxList.forEach((checkbox)=>{
@@ -35,26 +34,29 @@ checkboxList.forEach((checkbox)=>{
     })
 })
 
-// dibujarCarrito()
+dibujarCarrito()
+calcTotal()
 
-// function dibujarCarrito(){
-//     let listaCarrito = document.querySelector(".listaCarrito")
-//     let productosCarrito = JSON.parse(localStorage.getItem('carrito'))
-//     for(producto of productosCarrito){
-//         const nombreProducto = document.createElement("b")
-//         const stockProducto = document.createElement("p")
-//         const precioProducto = document.createElement("p")
-//         const card = document.createElement("div")
-//         card.classList.add("card")
-//         nombreProducto.innerHTML = producto.nombre
-//         stockProducto.innerHTML = "Stock Disponible: "+producto.stock
-//         precioProducto.innerHTML = "Precio: "+producto.valor+" CLP"
-//         card.appendChild(nombreProducto)
-//         card.appendChild(stockProducto)
-//         card.appendChild(precioProducto)
-//         listaCarrito.appendChild(card)
-//     }
-// }
+function dibujarCarrito(){
+    const listaCarrito = document.querySelector('.listaCarrito')
+    console.log(listaCarrito)
+    let productosCarrito = JSON.parse(localStorage.getItem('carrito'))
+    console.log(productosCarrito)
+    for(let producto of productosCarrito){
+        const nombreProducto = document.createElement("b")
+        const stockProducto = document.createElement("p")
+        const precioProducto = document.createElement("p")
+        const card = document.createElement("div")
+        card.classList.add("cardCarrito")
+        nombreProducto.innerHTML = producto.nombre
+        stockProducto.innerHTML = "Stock Disponible: "+producto.stock
+        precioProducto.innerHTML = "Precio: "+producto.valor+" CLP"
+        card.appendChild(nombreProducto)
+        card.appendChild(stockProducto)
+        card.appendChild(precioProducto)
+        listaCarrito.appendChild(card)
+    }
+}
 
 function activarEventoBoton(listaProductos){
     const botonesProductos = document.querySelectorAll('.anadirCarrito')
@@ -114,4 +116,21 @@ function dibujarCatalogo(listaProductos){
         catalogo.appendChild(card)
     }
     activarEventoBoton(listaProductos)
+}
+
+function calcTotal(){
+    const calcTotal = document.querySelector('.precioTotal')
+    let productosSeleccionados = JSON.parse(localStorage.getItem('carrito'))
+    const preciosSeleccionados = []
+    productosSeleccionados.forEach((producto)=>{
+        console.log(producto.valor)
+        preciosSeleccionados.push(producto.valor)
+    })
+    let total = Number()
+    for(let precio of preciosSeleccionados){
+        total=total+precio
+    }
+    calcTotal.innerHTML = 'Total: '+total+' CLP'
+    console.log(calcTotal)
+
 }

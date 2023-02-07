@@ -33,6 +33,8 @@ nav ul{
 header{
     background-color: black;
     padding: 10px;
+    position: sticky;
+    top: 0px;
 }
 main{
     margin: 10px;
@@ -73,5 +75,31 @@ main{
 }
 
 .listaCarrito{
-    border: black 1px;
+    margin: 5px 10px 5px 10px;
+}
+
+.tituloCarrito{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 5px 0px 5px;
+    border: 1px solid rgba(53, 53, 53, 0.541);
+    margin: 10px 10px 0px 10px;
+    padding: 5px;
+}
+
+.cardCarrito{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 5px 0px 5px;
+    border: 1px solid rgba(53, 53, 53, 0.541);
+    padding: 5px;
+}
+
+.calcTotal{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 5px 0px 5px;
+    border: 1px solid rgba(53, 53, 53, 0.541);
+    margin: 0px 10px 50px 10px;
+    padding: 5px;
 }
